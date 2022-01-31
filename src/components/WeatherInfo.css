@@ -1,0 +1,19 @@
+.weather {
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff52;
+  border-radius: 60px;
+  padding: 20px;
+}
+
+.icon {
+  background-color: rgb(240, 246, 255);
+}
+.weather_temp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.weather_other {
+}

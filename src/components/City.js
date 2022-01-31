@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./City.css";
+
 const City = ({ coordinates, setCoordinates }) => {
   const cities = [
     {
@@ -23,11 +25,9 @@ const City = ({ coordinates, setCoordinates }) => {
       lon: 0.1276,
     },
   ];
-
-  console.log(coordinates);
   return (
     <div>
-      <div>Select City</div>
+      <div className="sCity">Select City</div>
       <button
         type="button"
         className="btn btn-primary"
