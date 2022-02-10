@@ -1,0 +1,10 @@
+.daysAfter {
+  color: black;
+  background-color: #ffffff52;
+  border-radius: 60px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin: 20px;
+}

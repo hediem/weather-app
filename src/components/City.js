@@ -17,12 +17,12 @@ const City = ({ coordinates, setCoordinates }) => {
     {
       name: "new york",
       lat: 40.7128,
-      lon: 74.006,
+      lon: -74.006,
     },
     {
       name: "london",
       lat: 51.5072,
-      lon: 0.1276,
+      lon: -0.1276,
     },
   ];
   return (

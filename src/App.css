@@ -12,8 +12,10 @@
 }
 
 .cities {
-  text-align: center;
-  margin-top: 250px;
+  display: flex;
+  margin-top: 100px;
+  flex-direction: column;
+  align-items: center;
 }
 .title {
   margin-top: 50px;
