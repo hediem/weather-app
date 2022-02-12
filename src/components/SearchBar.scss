@@ -1,0 +1,15 @@
+.search {
+  color: hsl(0, 0%, 40%);
+  display: inline-block;
+  font-size: 25px;
+  font-style: normal;
+  width: 500px;
+  margin-bottom: 30px;
+  &.css-b62m3t-container .css-1pahdxg-control {
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.829) !important;
+    }
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.829);
+    border-color: rgba(255, 255, 255, 0.829);
+  }
+}

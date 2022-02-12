@@ -12,4 +12,15 @@ const getWeatherAndForecast = (coordinates, setResult) => {
     });
 };
 
-export default getWeatherAndForecast;
+const getCityCoordinates = async (cityName, setResultCity) => {
+  let x = await axios
+    .get(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${KEY}`
+    )
+    .then((res) => {
+      return res.data;
+    });
+  setResultCity(x);
+};
+
+export { getWeatherAndForecast, getCityCoordinates };

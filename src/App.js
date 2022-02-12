@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import "./App.scss";
-import getWeatherAndForecast from "./apis/weather";
+import { getWeatherAndForecast, getCityCoordinates } from "./apis/API";
+import SearchBar from "./components/SearchBar";
 import City from "./components/City";
 import WeatherInfo from "./components/WeatherInfo";
 import _5DaysForcast from "./components/5DaysForcast";
@@ -9,7 +10,8 @@ import _5DaysForcast from "./components/5DaysForcast";
 function App() {
   const [coordinates, setCoordinates] = useState(null);
   const [result, setResult] = useState(null);
-
+  const [cityName, setCityName] = useState(null);
+  const [resultCity, setResultCity] = useState(null);
   const time = new Date();
   const hour = Math.floor(time.getTime() / 1000);
 
@@ -18,6 +20,15 @@ function App() {
       getWeatherAndForecast(coordinates, setResult);
     }
   }, [coordinates]);
+
+  const x = async () => {
+    if (cityName != null) {
+      await getCityCoordinates(cityName, setResultCity);
+    }
+  };
+  useEffect(() => {
+    x();
+  }, [cityName]);
 
   return (
     <div
@@ -34,7 +45,11 @@ function App() {
       <div className="base">
         <div className="title"> Weather</div>
         <div className="cities">
-          <City coordinates={coordinates} setCoordinates={setCoordinates} />
+          <SearchBar
+            setCityName={setCityName}
+            resultCity={resultCity}
+            setCoordinates={setCoordinates}
+          />
           <WeatherInfo result={result} />
           <_5DaysForcast result={result} />
         </div>
