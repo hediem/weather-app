@@ -1,0 +1,79 @@
+.main {
+  background-image: url("./images/first.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+
+  &.Clear {
+    &.day {
+      background-image: url("./images/clear\ sky.jpg");
+    }
+    &.night {
+      background-image: url("./images/clear\ sky\ -\ night.jpg");
+    }
+  }
+  &.Clouds {
+    &.day {
+      background-image: url("./images/few\ cloads\ day.jpg");
+    }
+    &.night {
+      background-image: url("./images/few\ cloads\ night.jpg");
+    }
+  }
+  &.Thunderstorm {
+    &.day {
+      background-image: url("./images/thunderstorm\ day.jpg");
+    }
+    &.night {
+      background-image: url("./images/thunderstorm\ night.jpg");
+    }
+  }
+  &.Rain,
+  &.Drizzle {
+    &.day {
+      background-image: url("./images/rain-day-low.jpg");
+    }
+    &.night {
+      background-image: url("./images/rain-night.jpg");
+    }
+  }
+  &.Snow {
+    &.day {
+      background-image: url("./images/snow\ day.jpg");
+    }
+    &.night {
+      background-image: url("./images/snow\ night.jpg");
+    }
+  }
+  &.Mist,
+  &.Haze,
+  &.Fog {
+    &.day {
+      background-image: url("./images/mist\ day.jpg");
+    }
+    &.night {
+      background-image: url("./images/mist\ night.jpg");
+    }
+  }
+}
+
+.base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: cursive;
+  font-size: 80px;
+  color: aliceblue;
+}
+
+.cities {
+  display: flex;
+  margin-top: 100px;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  margin-top: 50px;
+}

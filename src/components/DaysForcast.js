@@ -16,7 +16,7 @@ const DaysForcast = ({ result, index }) => {
         <Icon result={result} />
         <Day index={index} />
         {description}
-        <div style={{ color: "#4FA5FA" }}>{min}°C</div>
+        <div style={{ color: "#054da0" }}>{min}°C</div>
         <div style={{ color: "#D52727" }}>{max}°C</div>
         Humidity: {humidity}%
         <br />
