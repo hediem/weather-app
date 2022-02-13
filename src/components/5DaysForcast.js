@@ -42,20 +42,20 @@ const _5DaysForcast = ({ result, hour }) => {
               .map((value, index) => {
                 return (
                   <SwiperSlide>
-                    <div
+                    {/* <div
                       className={`slider ${value.weather[0].main} ${
                         hour + 86400 * (index + 1) >= value.sunrise &&
                         hour + 86400 * (index + 1) < value.sunset
                           ? "day"
                           : "night"
                       }`}
-                    >
-                      <DaysForcast
-                        key={`day${index}`}
-                        result={value}
-                        index={index}
-                      />
-                    </div>
+                    > */}
+                    <DaysForcast
+                      key={`day${index}`}
+                      result={value}
+                      index={index}
+                    />
+                    {/* </div> */}
                   </SwiperSlide>
                 );
               })}
