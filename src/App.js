@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { getWeatherAndForecast, getCityCoordinates } from "./apis/API";
 import SearchBar from "./components/SearchBar";
-import City from "./components/City";
 import WeatherInfo from "./components/WeatherInfo";
 import _5DaysForcast from "./components/5DaysForcast";
 
@@ -12,6 +11,7 @@ function App() {
   const [result, setResult] = useState(null);
   const [cityName, setCityName] = useState(null);
   const [resultCity, setResultCity] = useState(null);
+
   const time = new Date();
   const hour = Math.floor(time.getTime() / 1000);
 
@@ -43,15 +43,28 @@ function App() {
       }`}
     >
       <div className="base">
-        <div className="title"> Weather</div>
+        <div
+          className={`title ${
+            result != null
+              ? hour >= result.current.sunrise && hour < result.current.sunset
+                ? "day"
+                : "night"
+              : ""
+          }`}
+        >
+          {" "}
+          Weather
+        </div>
         <div className="cities">
           <SearchBar
             setCityName={setCityName}
             resultCity={resultCity}
             setCoordinates={setCoordinates}
           />
-          <WeatherInfo result={result} />
-          <_5DaysForcast result={result} />
+          <div className="info">
+            <WeatherInfo result={result} />
+            <_5DaysForcast result={result} hour={hour} />
+          </div>
         </div>
       </div>
     </div>

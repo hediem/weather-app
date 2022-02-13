@@ -1,0 +1,101 @@
+.swiper {
+  width: 450px;
+  height: 400px;
+  border-radius: 40px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background-color: #ffffff9d;
+  border-radius: 45px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.forcast {
+  font-size: 30px;
+  margin: 10px;
+  text-align: center;
+  &.day {
+    color: #000000;
+    text-shadow: 0 0 rgba(255, 255, 255, 0.72);
+  }
+  &.night {
+    color: white;
+    text-shadow: 0 0 rgba(0, 0, 0, 0.72);
+  }
+}
+
+.slider {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: fixed;
+  width: 450px;
+  height: inherit;
+  left: 0;
+  right: 0;
+  &.Clear {
+    &.day {
+      background-image: url("../images/clear\ sky.jpg");
+    }
+    &.night {
+      background-image: url("../images/clear\ sky\ -\ night.jpg");
+    }
+  }
+  &.Clouds {
+    &.day {
+      background-image: url("../images/few\ cloads\ day.jpg");
+    }
+    &.night {
+      background-image: url("../images/few\ cloads\ night.jpg");
+    }
+  }
+  &.Thunderstorm {
+    &.day {
+      background-image: url("../images/thunderstorm\ day.jpg");
+    }
+    &.night {
+      background-image: url("../images/thunderstorm\ night.jpg");
+    }
+  }
+  &.Rain,
+  &.Drizzle {
+    &.day {
+      background-image: url("../images/rain-day-low.jpg");
+    }
+    &.night {
+      background-image: url("../images/rain-night.jpg");
+    }
+  }
+  &.Snow {
+    &.day {
+      background-image: url("../images/snow\ day.jpg");
+    }
+    &.night {
+      background-image: url("../images/snow\ night.jpg");
+    }
+  }
+  &.Mist,
+  &.Haze,
+  &.Fog {
+    &.day {
+      background-image: url("../images/mist\ day.jpg");
+    }
+    &.night {
+      background-image: url("../images/mist\ night.jpg");
+    }
+  }
+}

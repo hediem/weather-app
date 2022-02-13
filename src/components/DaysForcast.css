@@ -4,7 +4,8 @@
   border-radius: 60px;
   padding: 25px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 20px;
-  margin: 20px;
+  margin: 35px 100px;
+  align-items: center;
 }
