@@ -2,39 +2,17 @@ import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "./5DaysForcast.scss";
 import { Navigation } from "swiper";
 import DaysForcast from "./DaysForcast";
 import "../App.scss";
-const _5DaysForcast = ({ result, hour }) => {
+const _5DaysForcast = ({ result, hour, dayORnight }) => {
   if (result != null) {
     return (
       <div>
-        <div
-          className={`forcast ${
-            result != null
-              ? hour >= result.current.sunrise && hour < result.current.sunset
-                ? "day"
-                : "night"
-              : ""
-          }`}
-        >
-          5 Days Forcast
-        </div>
-        {/* <div
-          className={`slider ${
-            result != null ? result.current.weather[0].main : ""
-          } ${
-            result != null
-              ? hour >= result.current.sunrise && hour < result.current.sunset
-                ? "day"
-                : "night"
-              : ""
-          }`}
-        > */}
+        <div className={`forcast ${dayORnight()}`}>5 Days Forcast</div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           <div style={{ display: "flex" }}>
             {result.daily
@@ -42,6 +20,7 @@ const _5DaysForcast = ({ result, hour }) => {
               .map((value, index) => {
                 return (
                   <SwiperSlide>
+                    {/* if want to have background fits to weather of day */}
                     {/* <div
                       className={`slider ${value.weather[0].main} ${
                         hour + 86400 * (index + 1) >= value.sunrise &&
@@ -61,7 +40,6 @@ const _5DaysForcast = ({ result, hour }) => {
               })}
           </div>
         </Swiper>
-        {/* </div> */}
       </div>
     );
   }

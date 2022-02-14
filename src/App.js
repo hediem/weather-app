@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { getWeatherAndForecast, getCityCoordinates } from "./apis/API";
 import SearchBar from "./components/SearchBar";
+import City from "./components/City";
 import WeatherInfo from "./components/WeatherInfo";
 import _5DaysForcast from "./components/5DaysForcast";
 
@@ -15,6 +16,13 @@ function App() {
   const time = new Date();
   const hour = Math.floor(time.getTime() / 1000);
 
+  const dayORnight = () => {
+    return result != null
+      ? hour >= result.current.sunrise && hour < result.current.sunset
+        ? "day"
+        : "night"
+      : "";
+  };
   useEffect(() => {
     if (coordinates != null) {
       getWeatherAndForecast(coordinates, setResult);
@@ -34,36 +42,24 @@ function App() {
     <div
       className={`main ${
         result != null ? result.current.weather[0].main : ""
-      } ${
-        result != null
-          ? hour >= result.current.sunrise && hour < result.current.sunset
-            ? "day"
-            : "night"
-          : ""
-      }`}
+      } ${dayORnight()}`}
     >
       <div className="base">
-        <div
-          className={`title ${
-            result != null
-              ? hour >= result.current.sunrise && hour < result.current.sunset
-                ? "day"
-                : "night"
-              : ""
-          }`}
-        >
-          {" "}
-          Weather
-        </div>
+        <div className={`title ${dayORnight()}`}> Weather</div>
         <div className="cities">
           <SearchBar
             setCityName={setCityName}
             resultCity={resultCity}
             setCoordinates={setCoordinates}
           />
+          <City setCoordinates={setCoordinates} dayORnight={dayORnight} />
           <div className="info">
             <WeatherInfo result={result} />
-            <_5DaysForcast result={result} hour={hour} />
+            <_5DaysForcast
+              result={result}
+              hour={hour}
+              dayORnight={dayORnight}
+            />
           </div>
         </div>
       </div>
