@@ -51,8 +51,9 @@ function App() {
             setCityName={setCityName}
             resultCity={resultCity}
             setCoordinates={setCoordinates}
+            dayORnight={dayORnight}
           />
-          <City setCoordinates={setCoordinates} dayORnight={dayORnight} />
+          {/* <City setCoordinates={setCoordinates} dayORnight={dayORnight} /> */}
           <div className="info">
             <WeatherInfo result={result} />
             <_5DaysForcast

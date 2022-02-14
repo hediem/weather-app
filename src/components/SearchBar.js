@@ -3,13 +3,41 @@ import Select from "react-select";
 
 import useTimeout from "./TimeOut";
 import "./SearchBar.scss";
-const SearchBar = ({ setCityName, resultCity, setCoordinates }) => {
-  const [options, setOptions] = useState([]);
+const SearchBar = ({ setCityName, resultCity, setCoordinates, dayORnight }) => {
+  const defaultOptions = [
+    {
+      label: "gorgan",
+      value: {
+        lat: 36.8392776,
+        lon: 54.4320858,
+      },
+    },
+    {
+      label: "tehran",
+      value: {
+        lat: 35.6892523,
+        lon: 51.3896004,
+      },
+    },
+    {
+      label: "new york",
+      value: {
+        lat: 40.7127281,
+        lon: -74.0060152,
+      },
+    },
+    {
+      label: "london",
+      value: { lat: 51.5073219, lon: -0.1276474 },
+    },
+  ];
+  const [options, setOptions] = useState(defaultOptions);
+
   const [time, setTime] = useState(null);
   const [tcn, setTcn] = useState("");
 
   useEffect(() => {
-    console.log("resultCity", resultCity);
+    // console.log("resultCity", resultCity);
     if (resultCity != null) {
       setOptions(
         resultCity.map((value) => {
@@ -43,8 +71,12 @@ const SearchBar = ({ setCityName, resultCity, setCoordinates }) => {
   const onChangeHandler = (value) => {
     setCoordinates(value.value);
   };
+
+  const onClickHandler = () => {
+    setOptions(defaultOptions);
+  };
   return (
-    <div>
+    <div className="top">
       <Select
         className="search"
         isSearchable={true}
@@ -55,6 +87,13 @@ const SearchBar = ({ setCityName, resultCity, setCoordinates }) => {
         onInputChange={onInputChangeHandler}
         onChange={onChangeHandler}
       />
+      <button
+        type="button"
+        className={`btn btn-primary ${dayORnight()}`}
+        onClick={onClickHandler}
+      >
+        default
+      </button>
     </div>
   );
 };
