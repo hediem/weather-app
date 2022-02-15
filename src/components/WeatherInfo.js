@@ -1,18 +1,25 @@
 import React from "react";
+import Moment from "react-moment";
+import "moment-timezone";
 
 import "./WeatherInfo.css";
 import Icon from "./Icon";
 import Day from "./Day";
 
-const WeatherInfo = ({ result }) => {
-  if (result != null)
+const WeatherInfo = ({ result, timeOfCountry, timezone }) => {
+  if (result != null && timeOfCountry != null && timezone != null) {
+    // const date = timeOfCountry.slice(0, 10).replaceAll("-", "/");
+    // const time = timeOfCountry.slice(11, 16);
     return (
       <div className="weather">
         <Icon result={result.current} />
+
         <div className="weather_">
           <div className="weather_temp">
             <div style={{ color: "#D52727" }}>{result.current.temp}°C</div>
             Real Feel : {result.current.feels_like}
+            <br />
+            {result.current.weather[0].description}
           </div>
           <br />
           <div className="weather_other">
@@ -27,10 +34,16 @@ const WeatherInfo = ({ result }) => {
         </div>
         <div className="weather_description">
           <Day index={-1} />
-          {result.current.weather[0].description}
+          <Moment unix tz={timezone}>
+            {timeOfCountry}
+          </Moment>
+          {/* <br />
+          {time}
+          <br /> */}
         </div>
       </div>
     );
+  }
   return null;
 };
 

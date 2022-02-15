@@ -8,7 +8,7 @@ import "./5DaysForcast.scss";
 import { Navigation } from "swiper";
 import DaysForcast from "./DaysForcast";
 import "../App.scss";
-const _5DaysForcast = ({ result, hour, dayORnight }) => {
+const _5DaysForcast = ({ result, dayORnight }) => {
   if (result != null) {
     return (
       <div>
@@ -19,7 +19,7 @@ const _5DaysForcast = ({ result, hour, dayORnight }) => {
               .filter((value, index) => index > 0 && index < 6)
               .map((value, index) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={`slide${index}`}>
                     {/* if want to have background fits to weather of day */}
                     {/* <div
                       className={`slider ${value.weather[0].main} ${

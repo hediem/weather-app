@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { getWeatherAndForecast, getCityCoordinates } from "./apis/API";
 import SearchBar from "./components/SearchBar";
-import City from "./components/City";
 import WeatherInfo from "./components/WeatherInfo";
 import _5DaysForcast from "./components/5DaysForcast";
 
@@ -12,9 +11,12 @@ function App() {
   const [result, setResult] = useState(null);
   const [cityName, setCityName] = useState(null);
   const [resultCity, setResultCity] = useState(null);
+  const [timeOfCountry, setTimeOfCountry] = useState(null);
+  const [timezone, setTimezone] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const time = new Date();
-  const hour = Math.floor(time.getTime() / 1000);
+  const t = new Date();
+  const hour = Math.floor(t.getTime() / 1000);
 
   const dayORnight = () => {
     return result != null
@@ -23,11 +25,32 @@ function App() {
         : "night"
       : "";
   };
+
+  // async function x() {
+  //   setLoading(false);
+  //   if (coordinates != null) {
+  //     await getWeatherAndForecast(coordinates, setResult);
+  //   }
+  //   if (cityName != null) {
+  //     await getCityCoordinates(cityName, setResultCity);
+  //   }
+  //   setLoading(true);
+  // }
+  // useEffect(() => {
+  //   x();
+  // }, []);
   useEffect(() => {
     if (coordinates != null) {
       getWeatherAndForecast(coordinates, setResult);
     }
   }, [coordinates]);
+
+  useEffect(() => {
+    if (result != null) {
+      setTimeOfCountry(result.current.dt);
+      setTimezone(result.timezone);
+    }
+  }, [result]);
 
   const x = async () => {
     if (cityName != null) {
@@ -53,15 +76,24 @@ function App() {
             setCoordinates={setCoordinates}
             dayORnight={dayORnight}
           />
-          {/* <City setCoordinates={setCoordinates} dayORnight={dayORnight} /> */}
+          {/* {loading == false ? (
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) : ( */}
           <div className="info">
-            <WeatherInfo result={result} />
+            <WeatherInfo
+              result={result}
+              timeOfCountry={timeOfCountry}
+              timezone={timezone}
+            />
             <_5DaysForcast
               result={result}
               hour={hour}
               dayORnight={dayORnight}
             />
           </div>
+          {/* )} */}
         </div>
       </div>
     </div>

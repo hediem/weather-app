@@ -23,4 +23,11 @@ const getCityCoordinates = async (cityName, setResultCity) => {
   setResultCity(x);
 };
 
+// const getTime = (timezone, setTimeOfCountry) => {
+//   axios.get(`http://worldtimeapi.org/api/timezone/${timezone}`).then((res) => {
+//     console.log(res.data);
+//     setTimeOfCountry(res.data.unixtime);
+//   });
+// };
+
 export { getWeatherAndForecast, getCityCoordinates };
