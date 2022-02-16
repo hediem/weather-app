@@ -76,11 +76,6 @@ function App() {
             setCoordinates={setCoordinates}
             dayORnight={dayORnight}
           />
-          {/* {loading == false ? (
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          ) : ( */}
           <div className="info">
             <WeatherInfo
               result={result}
@@ -93,7 +88,6 @@ function App() {
               dayORnight={dayORnight}
             />
           </div>
-          {/* )} */}
         </div>
       </div>
     </div>
