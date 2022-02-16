@@ -16,7 +16,7 @@ const WeatherInfo = ({ result, timeOfCountry, timezone }) => {
   );
 
   useEffect(() => {
-    if (result != null && timeOfCountry != null && timezone != null) {
+    if (timeOfCountry != null && timezone != null) {
       let date = new Date(timeOfCountry * 1000);
       setTime(
         new Date(
@@ -26,7 +26,7 @@ const WeatherInfo = ({ result, timeOfCountry, timezone }) => {
         )
       );
     }
-  }, [result, timeOfCountry, timezone]);
+  }, [timeOfCountry, timezone]);
 
   if (result == null && timeOfCountry == null && timezone == null) {
     return null;
@@ -53,16 +53,11 @@ const WeatherInfo = ({ result, timeOfCountry, timezone }) => {
       </div>
       <div className="weather_description">
         <Day index={-1} />
-        {/* <Moment format="hh:mm:ss" interval={1000} date={time} duration={futureTime} /> */}
         {time
           ? `${time.getHours() < 10 ? "0" : ""}${time.getHours()}:${
               time.getMinutes() < 10 ? "0" : ""
             }${time.getMinutes()}`
           : ""}
-        {/* {dd} */}
-        {/* <br />
-          {time}
-          <br /> */}
       </div>
     </div>
   );
