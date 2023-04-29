@@ -1,9 +1,10 @@
 .swiper {
-  width: 450px;
+  // width: 450px;
   // height: 450px;
   border-radius: 40px;
   background-color: #ffffff9d;
   z-index: auto;
+  padding: 15px 0px;
 }
 
 .swiper-slide {
@@ -43,7 +44,7 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: fixed;
-  width: 450px;
+  // width: 450px;
   height: inherit;
   left: 0;
   right: 0;

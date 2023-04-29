@@ -63,20 +63,19 @@ function App() {
 
   return (
     <div
-      className={`main ${
-        result != null ? result.current.weather[0].main : ""
-      } ${dayORnight()}`}
+      className={`main ${result != null ? result.current.weather[0].main : ""
+        } ${dayORnight()}`}
     >
       <div className="base">
-        <div className={`title ${dayORnight()}`}> Weather</div>
-        <div className="cities">
+        <div className={`title ${dayORnight()} fs-1`}> Weather</div>
+        <div className="cities row col-12">
           <SearchBar
             setCityName={setCityName}
             resultCity={resultCity}
             setCoordinates={setCoordinates}
             dayORnight={dayORnight}
           />
-          <div className="info">
+          <div className="info row justify-content-center justify-content-md-evenly">
             <WeatherInfo
               result={result}
               timeOfCountry={timeOfCountry}

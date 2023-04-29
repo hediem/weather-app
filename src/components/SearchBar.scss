@@ -1,10 +1,10 @@
 .search {
   color: hsl(0, 0%, 40%);
   display: inline-block;
-  font-size: 25px;
+  // font-size: 25px;
   font-style: normal;
-  width: 500px;
-  margin-bottom: 30px;
+  // width: 500px;
+  // margin-bottom: 30px;
   &.css-b62m3t-container .css-1pahdxg-control {
     &:hover {
       border-color: rgba(255, 255, 255, 0.829) !important;
@@ -17,14 +17,14 @@
 .top {
   display: flex;
   align-items: baseline;
+  justify-content: center;
 }
 .btn {
-  font-size: 1.4rem;
+  // font-size: 1.4rem;
   font-family: cursive;
   border-radius: 10px;
 }
 .btn-primary {
-  margin: 10px;
   color: #000000;
   background-color: #ffffffe6;
   border-color: #ffffff96;

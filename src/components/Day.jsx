@@ -28,6 +28,8 @@ const Day = ({ index }) => {
     case 6:
       dayName = "Saturday";
       break;
+    default:
+      dayName = "default"
   }
   return <div>{dayName}</div>;
 };

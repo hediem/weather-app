@@ -11,14 +11,14 @@ const getWeatherAndForecast = (coordinates, setResult) => {
       console.log("getWeatherAndForecast", res);
       setResult(res.data);
     });
-  };
-  
-  const getCityCoordinates = async (cityName, setResultCity) => {
-    let x = await axios
+};
+
+const getCityCoordinates = async (cityName, setResultCity) => {
+  let x = await axios
     .get(
       `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${KEY}`
-      )
-      .then((res) => {
+    )
+    .then((res) => {
       console.log("getCityCoordinates", res);
       return res.data;
     });

@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 import useTimeout from "./TimeOut";
@@ -42,15 +42,13 @@ const SearchBar = ({ setCityName, resultCity, setCoordinates, dayORnight }) => {
       setOptions(
         resultCity.map((value) => {
           return {
-            label: `${value.country != null ? value.country + "," : ""} ${
-              value.state != null ? value.state + "," : ""
-            } ${value.name != null ? value.name + "," : ""} ${
-              value.local_names != null
+            label: `${value.country != null ? value.country + "," : ""} ${value.state != null ? value.state + "," : ""
+              } ${value.name != null ? value.name + "," : ""} ${value.local_names != null
                 ? value.local_names.fa != null
                   ? value.local_names.fa
                   : ""
                 : ""
-            }`,
+              }`,
             value: { lat: value.lat, lon: value.lon },
           };
         })
@@ -76,9 +74,9 @@ const SearchBar = ({ setCityName, resultCity, setCoordinates, dayORnight }) => {
     setOptions(defaultOptions);
   };
   return (
-    <div className="top">
+    <div className="top row">
       <Select
-        className="search"
+        className="search col-12 col-sm-8 col-lg-5 col-xxl-4 fs-4 mb-2"
         isSearchable={true}
         name="color"
         options={options}
@@ -89,8 +87,9 @@ const SearchBar = ({ setCityName, resultCity, setCoordinates, dayORnight }) => {
       />
       <button
         type="button"
-        className={`btn btn-primary ${dayORnight()}`}
+        className={`btn btn-primary ${dayORnight()} col-11 col-sm-2 col-lg-1`}
         onClick={onClickHandler}
+        style={{ width: "auto" }}
       >
         default
       </button>

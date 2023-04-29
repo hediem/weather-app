@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import useInterval from "./TimeInterval";
 
-import "./WeatherInfo.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "./WeatherInfo.scss";
+
 import Icon from "./Icon";
 import Day from "./Day";
+import Hourly from "./Hourly";
 
 const WeatherInfo = ({ result, timeOfCountry, timezone }) => {
   const [time, setTime] = useState(null);
@@ -32,17 +38,17 @@ const WeatherInfo = ({ result, timeOfCountry, timezone }) => {
     return null;
   }
   return (
-    <div className="weather">
+    <div className="weather d-flex d-lg-flex flex-column flex-lg-row col-12 col-sm-9 col-md-5 col-lg-5 col-xxl-4 row text-center fs-4">
       <Icon result={result.current} />
 
-      <div className="weather_">
+      <div className="weather_ col-lg-7">
         <div className="weather_temp">
           <div style={{ color: "#D52727" }}>{result.current.temp}°C</div>
           Real Feel : {result.current.feels_like}
           <br />
           {result.current.weather[0].description}
         </div>
-        <br />
+
         <div className="weather_other">
           Humidity : {result.current.humidity}%
           <br />
@@ -51,13 +57,40 @@ const WeatherInfo = ({ result, timeOfCountry, timezone }) => {
           km/h
         </div>
       </div>
-      <div className="weather_description">
+      <div className="weather_description col-lg-3">
         <Day index={-1} />
         {time
-          ? `${time.getHours() < 10 ? "0" : ""}${time.getHours()}:${
-              time.getMinutes() < 10 ? "0" : ""
-            }${time.getMinutes()}`
+          ? `${time.getHours() < 10 ? "0" : ""}${time.getHours()}:${time.getMinutes() < 10 ? "0" : ""
+          }${time.getMinutes()}`
           : ""}
+      </div>
+      <div className="mt-3">
+        <Swiper className="mySwiper" spaceBetween={20} breakpoints={
+          {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1400: {
+              slidesPerView: 4,
+            }
+          }
+        }>
+          {result.hourly.slice(0, 25).map((value, index) => {
+            return (
+              <SwiperSlide key={`slide${index}`}>
+                <Hourly
+                  key={`day${index}`}
+                  result={value}
+                  index={index}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+
       </div>
     </div>
   );

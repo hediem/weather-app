@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./DaysForcast.css";
+import "./DaysForcast.scss";
 import Icon from "./Icon";
 import Day from "./Day";
 //result = result.daily[i]

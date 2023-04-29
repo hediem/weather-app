@@ -1,17 +1,18 @@
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+
+import DaysForcast from "./DaysForcast";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "./5DaysForcast.scss";
-import { Navigation } from "swiper";
-import DaysForcast from "./DaysForcast";
 import "../App.scss";
 const _5DaysForcast = ({ result, dayORnight }) => {
   if (result != null) {
     return (
-      <div>
+      <div className="col-12 col-sm-9 col-md-7 col-lg-5 col-xxl-4">
         <div className={`forcast ${dayORnight()}`}>5 Days Forcast</div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           <div style={{ display: "flex" }}>
