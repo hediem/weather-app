@@ -57,6 +57,7 @@ function App() {
       await getCityCoordinates(cityName, setResultCity);
     }
   };
+
   useEffect(() => {
     x();
   }, [cityName]);
