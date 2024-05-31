@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const KEY = "f62ee084a1ef88e54f947e36ce32e9da";
-
 const getWeatherAndForecast = (coordinates, setResult) => {
   axios
     .get(
